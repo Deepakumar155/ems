@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manager Dashboard</title>
+  <link rel="stylesheet" href="manager.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <h1>🧑‍💼 Manager Dashboard</h1>
+      <p>Manage employees, salaries, tasks, reports, attendance, and profile</p>
+      <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+    </header>
+
+    <div class="dashboard-grid">
+
+      <!-- ✅ Approve Finished Tasks -->
+      <section class="card">
+        <h2>✅ Review Finished Tasks</h2>
+        <button onclick="loadFinishedTasks()">Load Tasks</button>
+        <div id="finishedTasksList" class="output-box">Click above to load finished tasks.</div>
+      </section>
+
+      <!-- 👥 View Employees -->
+      <section class="card">
+        <h2>👥 View Employees</h2>
+        <button onclick="viewEmployees()">View All</button>
+        <div id="employeeList" class="output-box">Click to load all employees.</div>
+      </section>
+
+      <!-- 🔥 Fire Employee -->
+      <section class="card">
+        <h2>🔥 Fire Employee</h2>
+        <input type="text" id="fireEmpId" placeholder="Employee ID" />
+        <button onclick="fireEmployee()">Fire</button>
+      </section>
+
+      <!-- 💰 Update Salary -->
+      <section class="card">
+        <h2>💰 Update Salary</h2>
+        <input type="text" id="salaryEmpId" placeholder="Employee ID" />
+        <input type="number" id="salaryAmount" placeholder="Amount (₹)" />
+        <button onclick="updateSalary()">Update</button>
+      </section>
+
+      <!-- 📌 Assign Task -->
+      <section class="card">
+        <h2>📌 Assign Task</h2>
+        <textarea id="teamMembers" placeholder="Employee IDs (comma-separated)"></textarea>
+        <textarea id="taskDescription" placeholder="Task Description"></textarea>
+        <button onclick="assignTask()">Assign</button>
+      </section>
+
+      <!-- 📄 Review Reports -->
+      <section class="card">
+        <h2>📄 Review Reports</h2>
+        <button onclick="loadAllReports()">Load Reports</button>
+        <div id="reportReviewList" class="output-box">Click above to load submitted reports.</div>
+      </section>
+
+      <!-- 🕓 Attendance -->
+      <section class="card">
+        <h2>🕓 Attendance Logs</h2>
+        <button onclick="viewAttendance()">View Attendance</button>
+        <div id="attendanceList" class="output-box">Check if employee is online or offline.</div>
+      </section>
+
+      <!-- 👤 Manager Profile -->
+      <section class="card">
+        <h2>👤 My Profile</h2>
+        <label>Username:</label>
+        <input type="text" id="profileUsername" disabled />
+        <label>Email:</label>
+        <input type="text" id="profileEmail" />
+        <label>Password:</label>
+        <input type="text" id="profilePassword" />
+        <label>Gender:</label>
+        <input type="text" id="profileGender" />
+        <button onclick="updateProfile()">💾 Save Changes</button>
+        <div id="profileStatus"></div>
+      </section>
+
+    </div>
+  </div>
+  <script src="manager.js"></script>
+</body>
+</html>

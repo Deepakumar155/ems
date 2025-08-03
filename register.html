@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register | Employee Portal</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box animate-fade">
+      <h2>Register New User</h2>
+
+      <input type="text" id="regId" placeholder="ID Number" />
+      <input type="text" id="regUsername" placeholder="Username" />
+      <input type="password" id="regPassword" placeholder="Password" />
+      <input type="email" id="regEmail" placeholder="Email" />
+      <input type="date" id="regDob" placeholder="Date of Birth" />
+      
+      <select id="regGender">
+        <option value="" disabled selected>Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <select id="regRole">
+        <option value="employee">Employee</option>
+        <option value="manager">Manager</option>
+      </select>
+
+      <button onclick="register()">📋 Register</button>
+      <div id="registerStatus" class="status-text"></div>
+    </div>
+  </div>
+
+  <script>
+    async function register() {
+      const id = document.getElementById("regId").value.trim();
+      const username = document.getElementById("regUsername").value.trim();
+      const password = document.getElementById("regPassword").value.trim();
+      const email = document.getElementById("regEmail").value.trim();
+      const dob = document.getElementById("regDob").value;
+      const gender = document.getElementById("regGender").value;
+      const role = document.getElementById("regRole").value;
+      const status = document.getElementById("registerStatus");
+
+      status.innerText = "";
+      status.style.color = "red";
+
+      if (!id || !username || !password || !email || !dob || !gender || !role) {
+        status.innerText = "⚠️ Fill all fields.";
+        return;
+      }
+
+      try {
+        const response = await fetch('http://localhost:3000/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id, username, password, email, dob, gender, role })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          status.style.color = "green";
+          status.innerText = "✅ Registered successfully!";
+        } else {
+          status.innerText = "❌ " + result.message;
+        }
+      } catch (err) {
+        console.error(err);
+        status.innerText = "❌ Error connecting to server.";
+      }
+    }
+  </script>
+</body>
+</html>

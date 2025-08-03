@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Employee Dashboard</title>
+  <link rel="stylesheet" href="employee.css" />
+ 
+</head>
+<body>
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <h1>👋 Welcome, Employee</h1>
+      <p>Your hub for tasks, reports, attendance, salary, and profile</p>
+      <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+    </header>
+
+    <div class="dashboard-grid">
+      <!-- 👤 Profile -->
+      <section class="card">
+        <h2>👤 My Profile</h2>
+        <label>Username:</label>
+        <input type="text" id="username" disabled />
+        <label>Email:</label>
+        <input type="text" id="email" />
+        <label>Password:</label>
+        <input type="text" id="password" />
+        <label>DOB:</label>
+        <input type="date" id="dob" />
+        <label>Gender:</label>
+        <input type="text" id="gender" />
+        <button onclick="updateProfile()">💾 Save Changes</button>
+        <div id="profileStatus"></div>
+      </section>
+
+      <!-- 📌 Tasks -->
+      <section class="card">
+        <h2>📌 My Tasks</h2>
+        <button onclick="loadTasks()">Load Tasks</button>
+        <div id="taskList" class="output-box">Click above to load tasks.</div>
+      </section>
+
+      <!-- 📈 Update Progress -->
+      <section class="card">
+        <h2>📈 Update Task Progress</h2>
+        <input type="number" id="taskId" placeholder="Task ID" />
+        <input type="number" id="progress" placeholder="Progress (%)" />
+        <button onclick="updateProgress()">Update</button>
+        <button onclick="markTaskFinished()">✅ Mark as Finished</button>
+      </section>
+
+      <!-- 📄 Submit Report -->
+      <section class="card">
+        <h2>📄 Submit Report</h2>
+        <textarea id="reportText" placeholder="Report description..."></textarea>
+        <input type="file" id="reportFile" />
+        <button onclick="submitReport()">Submit</button>
+      </section>
+
+      <!-- 📁 My Reports -->
+      <section class="card">
+        <h2>📁 My Reports</h2>
+        <button onclick="loadReports()">View Reports</button>
+        <div id="reportList" class="output-box"></div>
+      </section>
+
+      <!-- 💰 Salary -->
+      <section class="card">
+        <h2>💰 Salary Details</h2>
+        <button onclick="getSalary()">Check Salary</button>
+        <div id="salaryInfo" class="output-box"></div>
+        <button onclick="claimSalary()">Claim Salary</button>
+      </section>
+
+      <!-- 🕓 Attendance -->
+      <section class="card">
+        <h2>🕓 Attendance</h2>
+        <button onclick="markLogin()">Log In</button>
+        <button onclick="markLogout()">Log Out</button>
+      </section>
+    </div>
+  </div>
+
+
+  <script src="employee.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Employee Portal</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box animate-fade">
+      <img src="login.png" alt="Login Icon" class="login-icon">
+      <h2>Employee Portal Login</h2>
+
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <select id="role">
+        <option value="manager">Manager</option>
+        <option value="employee">Employee</option>
+      </select>
+
+      <button onclick="login()">➡ Login</button>
+      <div id="loginStatus" class="status-text"></div>
+      <p><a href="register.html">📝 Register a new user</a></p>
+    </div>
+
+  </div>
+
+  <script src="auth.js"></script>
+</body>
+</html>
